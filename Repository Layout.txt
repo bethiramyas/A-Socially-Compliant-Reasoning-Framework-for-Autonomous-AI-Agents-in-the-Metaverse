@@ -1,0 +1,14 @@
+metaverse_socio_tech_agents/
+├─ run_experiments.py
+├─ core/
+│  ├─ pomdp.py          # POMDP + Bayes filtering (s_t = [x_t, c_t, e_t])
+│  ├─ ontology.py       # labeled multigraph 𝒢=(V,E) + semantic heuristics
+│  ├─ spt.py            # Social Practice tuple ⟨pre,acts,post,mean⟩ + compliance
+│  ├─ fusion.py         # toy multimodal encoder Φ → z_t^{emo}
+│  ├─ mcts.py           # Guided MCTS (prior-regularized UCB)
+│  ├─ policy.py         # reward shaping (task, compliance, affect, latency)
+│  └─ eval.py           # scenarios, baselines, ablations, plots
+├─ results/             # auto-generated (csv + png)
+├─ requirements.txt
+├─ LICENSE
+└─ README.md
