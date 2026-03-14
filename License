@@ -1,0 +1,70 @@
+MIT License
+
+Copyright (c) 2025 Bethi Ramya Sree, Dr. Jagjit Singh Dhatterwal, Rajesh Banala
+Department of Computer Science and Artificial Intelligence (CS-AI)
+SR University, Warangal, Telangana, India — Pin 506371
+https://sru.edu.in
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-------------------------------------------------------------------------------
+
+CITATION
+
+If you use this software or the accompanying synthetic datasets in your
+research, please cite the following paper:
+
+  Bethi Ramya Sree, Jagjit Singh Dhatterwal, and Rajesh Banala.
+  "A Socially Compliant Reasoning Framework for Autonomous AI Agents
+  in the Metaverse: Integrating Ontology-Driven Intelligence and
+  Deep Learning." SR University, Warangal, 2025.
+
+  GitHub: https://github.com/bethiramyas/A-Socially-Compliant-Reasoning-Framework-for-Autonomous-AI-Agents-in-the-Metaverse
+
+BibTeX:
+
+  @article{bethiramyas2025socially,
+    title   = {A Socially Compliant Reasoning Framework for Autonomous
+               AI Agents in the Metaverse: Integrating Ontology-Driven
+               Intelligence and Deep Learning},
+    author  = {Bethi Ramya Sree and Dhatterwal, Jagjit Singh and Banala, Rajesh},
+    year    = {2025},
+    note    = {Department of CS-AI, SR University, Warangal, Telangana, India},
+    url     = {https://github.com/bethiramyas/A-Socially-Compliant-Reasoning-Framework-for-Autonomous-AI-Agents-in-the-Metaverse}
+  }
+
+-------------------------------------------------------------------------------
+
+THIRD-PARTY DATASETS
+
+This repository references the following external datasets which have their
+own separate licenses. They are NOT covered by the MIT License above:
+
+  CMU-MOSEI
+  License : Academic research use
+  Source  : https://github.com/A2Zadeh/CMU-MultimodalSDK
+  Citation: Zadeh et al. (2018). ACL 2018.
+
+  PersonaChat
+  License : Creative Commons Attribution 3.0 (CC BY 3.0)
+  Source  : https://huggingface.co/datasets/bavard/personachat_truecased
+  Citation: Zhang et al. (2018). ACL 2018.
+
+Users are responsible for complying with the respective licenses of these
+third-party datasets before use.
