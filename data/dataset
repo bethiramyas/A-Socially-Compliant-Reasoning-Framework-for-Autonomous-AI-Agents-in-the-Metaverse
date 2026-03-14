@@ -1,0 +1,208 @@
+Dataset Description and Documentation
+A Socially Compliant Reasoning Framework for Autonomous AI Agents in the Metaverse
+Bethi Ramya Sree · Dr. Jagjit Singh Dhatterwal · Rajesh Banala · SR University, Warangal
+1. Overview
+
+This document describes all datasets used in the research paper titled “A Socially Compliant Reasoning Framework for Autonomous AI Agents in the Metaverse: Integrating Ontology-Driven Intelligence and Deep Learning.” The study employs two categories of data: (1) synthetic corpora generated specifically for this research using a Unity3D simulation environment, and (2) publicly available benchmark datasets used for training the multimodal perception and emotion recognition modules.
+
+The three synthetic datasets correspond to the three core Metaverse evaluation scenarios described in Section 5 of the paper: virtual classroom tutoring, e-commerce negotiation, and multi-party conflict mediation. Each dataset is annotated with norm compliance scores, Social Practice Theory (SPT) labels, ontology-grounded reasoning traces, and emotion alignment metrics aligned precisely to the mathematical formulations in the paper.
+
+Dataset Summary
+
+Dataset	Type	Sessions	Turns	Availability
+classroom_interactions.json	Synthetic (original)	60	847	Included in repo
+ecommerce_negotiations.json	Synthetic (original)	55	763	Included in repo
+mediation_conflicts.json	Synthetic (original)	50	712	Included in repo
+CMU-MOSEI	Public benchmark	N/A	23,000+ segments	External link
+PersonaChat	Public benchmark	N/A	160,000+ utterances	External link
+
+2. Synthetic Datasets (Original — Included in Repository)
+
+The three synthetic datasets were constructed as part of this research to fill a gap in publicly available corpora: no existing dataset captures the combination of social practice annotations, ontology-grounded reasoning traces, and multi-turn emotion dynamics required to evaluate the proposed framework in Metaverse scenarios. They were generated in Unity3D, reviewed for social realism by the research team, and annotated using the SPT practice library and the norm compliance rubric described in Equation 9 of the paper.
+
+2.1  Classroom Interactions Dataset
+
+Description
+This dataset contains turn-by-turn dialogue sessions between an AI tutor agent and student avatars in a Unity3D virtual classroom environment. Sessions span diverse subjects including mathematics, computer science, and critical thinking. The dataset is designed to evaluate the agent’s ability to apply pedagogical social practices such as scaffolded questioning, empathetic encouragement, positive reinforcement, and celebratory progression — all defined in the SPT practice library.
+
+Statistics
+Property	Value
+File	classroom_interactions.json
+Sessions	60
+Total turns	847
+Agent turns	~424 (annotated)
+Roles	teacher_agent, student
+Emotion classes	neutral, confused, engaged, frustrated, happy, hesitant
+Avg session length	~14 turns
+Avg compliance score	0.945
+Avg emotion alignment	0.88
+Avg user trust	4.5 / 5.0
+
+Annotation Fields (per agent turn)
+•  compliance_score — NCₜ score in [0, 1] computed per Equation 9 of the paper
+•  practice_active — active SPT practice (e.g., scaffolded_questioning, empathetic_encouragement)
+•  ontology_context — list of ontology concepts (TBox/ABox nodes) guiding agent reasoning
+•  agent_action — symbolic action type executed by the agent (e.g., affirm_and_redirect, pose_challenge)
+•  emotion, emotion_confidence — emotion label and confidence score for each speaker turn
+
+Session-Level Metrics
+•  avg_compliance — mean NC score across all agent turns in the session
+•  avg_emotion_alignment — mean EA score per Equation 19
+•  user_trust — post-session trust rating on a 5-point Likert scale
+•  session_outcome — categorical result: success, partial, or incomplete
+
+ⓘ  Paper results (Table 1): Reasoning accuracy 0.88 · Norm compliance 0.92 · Emotion alignment 0.87 · User trust 4.5
+
+2.2  E-Commerce Negotiation Dataset
+
+Description
+This dataset contains buyer-seller negotiation dialogues set in a Unity3D virtual marketplace. The AI seller agent must simultaneously pursue commercial objectives (reaching a deal) and comply with social norms of politeness, honesty, and fairness. The dataset captures a range of negotiation dynamics including counter-offers, value bundling, floor-price disclosure, and alternative product offering. It is the most structured of the three scenarios, which explains the framework’s highest reasoning accuracy in this setting (0.91).
+
+Statistics
+Property	Value
+File	ecommerce_negotiations.json
+Sessions	55
+Total turns	763
+Agent turns	~380 (annotated)
+Roles	seller_agent, buyer
+Emotion classes	neutral, interested, skeptical, frustrated, satisfied, amused
+Avg session length	~14 turns
+Avg compliance score	0.918
+Avg emotion alignment	0.85
+Avg user trust	4.3 / 5.0
+
+Additional Fields (per turn)
+•  offer_price — current price on the table in USD (null if the turn is not a pricing move)
+
+Session-Level Fields
+•  session_outcome — one of: deal_closed, no_deal, partial_agreement
+•  final_price_usd — agreed price at session end (null if no deal was reached)
+
+ⓘ  Paper results (Table 1): Reasoning accuracy 0.91 · Norm compliance 0.89 · Emotion alignment 0.85 · User trust 4.3
+
+2.3  Conflict Mediation Dataset
+
+Description
+This is the most socially complex dataset in the collection. It contains three-party sessions in which the AI mediator agent works to de-escalate disputes between two conflicting user avatars. Disputes span team project disagreements, workplace task allocation conflicts, and neighbour complaints. The mediator must simultaneously track the emotional states of two parties, maintain strict neutrality, apply structured mediation practices (e.g., active reflective listening, dual validation, reframing), and construct forward agreements. This scenario produces the highest emotion alignment score (0.91) and user trust (4.6) in the paper’s results, confirming that empathetic sensitivity is especially critical in high-tension environments.
+
+Statistics
+Property	Value
+File	mediation_conflicts.json
+Sessions	50
+Total turns	712
+Agent turns	~238 (annotated)
+Roles	mediator_agent, party_A, party_B
+Emotion classes	neutral, angry, frustrated, anxious, calm, satisfied, defensive
+Avg session length	~14 turns
+Avg compliance score	0.947
+Avg emotion alignment	0.91
+Avg user trust	4.6 / 5.0
+
+Additional Fields
+•  escalation_level — conflict intensity at each turn on a 1–5 scale (1 = calm, 5 = severe)
+•  de_escalation_delta — change in escalation level from session start to end; negative values indicate successful de-escalation
+•  dispute_type — category label (e.g., team_project_disagreement, workplace_task_allocation, neighbour_noise_complaint)
+
+ⓘ  Paper results (Table 1): Reasoning accuracy 0.86 · Norm compliance 0.90 · Emotion alignment 0.91 · User trust 4.6
+
+3. Public Benchmark Datasets (External — Not Included in Repository)
+
+The following publicly available datasets were used to train the multimodal fusion encoder and emotion recognition components of the framework (Section 5 of the paper). They are not included in this repository due to their size and licensing conditions. Researchers wishing to reproduce the full training pipeline should download them from the official sources linked below.
+
+3.1  CMU-MOSEI
+
+Description
+CMU-MOSEI (CMU Multimodal Opinion Sentiment and Emotion Intensity) is one of the largest and most widely used multimodal sentiment and emotion benchmarks in the literature. It contains video segments from YouTube, each aligned across text (transcripts), audio (prosodic features), and vision (facial action units), with fine-grained annotations for sentiment polarity and six discrete emotion categories. In this research, CMU-MOSEI was used to train the transformer-based multimodal fusion encoder (Equation 4 of the paper) and to provide emotion class labels compatible with the affect vector zᵗ used in the emotion alignment reward (Equation 10).
+
+Property	Details
+Full name	CMU Multimodal Opinion Sentiment and Emotion Intensity
+Modalities	Text (transcripts), Audio (prosody, MFCCs), Video (facial AUs)
+Annotations	Sentiment scores [-3, +3]; 6 emotion classes with intensity
+Size	~23,500 video segments; 1,000+ unique speakers; 250+ hours
+Emotion classes	happy, sad, angry, surprised, disgusted, fearful
+License	Academic research use (CMU Language Technologies Institute)
+Used for	Multimodal fusion encoder training; emotion class label alignment
+Paper reference	Zadeh et al. (2018) — Reference [17] in the paper
+
+Official SDK & download: https://github.com/A2Zadeh/CMU-MultimodalSDK
+Dataset page: http://multicomp.cs.cmu.edu/resources/cmu-mosei-dataset
+
+Citation
+Zadeh, A. B., Liang, P. P., Poria, S., Cambria, E., & Morency, L. P. (2018). Multimodal language analysis in the wild: CMU-MOSEI dataset and interpretable dynamic fusion graph. Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (ACL 2018), 2236–2246.
+
+3.2  PersonaChat
+
+Description
+PersonaChat is a large-scale open-domain dialogue dataset in which each conversation is grounded in a persona — a set of natural-language sentences describing a speaker’s personality and background. The dataset was designed to encourage dialogue agents to produce consistent, coherent, and personality-aware responses. In this research, PersonaChat was used to train the dialogue grounding module, providing the agent with a basis for contextually coherent and empathetically consistent language generation across the three Metaverse scenarios. The persona mechanism aligns naturally with the Social Practice Theory operationalisation in this framework, where agents are expected to behave consistently with defined roles and cultural contexts.
+
+Property	Details
+Full name	PersonaChat Dialogue Dataset
+Modalities	Text only
+Annotations	Persona descriptions (3–5 sentences per speaker); multi-turn conversation pairs
+Size	~164,000 utterances; ~10,907 dialogues; ~1,155 unique personas
+License	Creative Commons Attribution 3.0 (CC BY 3.0)
+Used for	Dialogue grounding; contextual and empathetic response generation
+Paper reference	Zhang et al. (2018) — cited in Section 5 (Methodology)
+
+HuggingFace download: https://huggingface.co/datasets/bavard/personachat_truecased
+Original paper: https://arxiv.org/abs/1801.07243
+
+Citation
+Zhang, S., Dinan, E., Urbanek, J., Szlam, A., Kiela, D., & Weston, J. (2018). Personalizing dialogue agents: I have a persona. Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (ACL 2018), 2204–2213.
+
+4. Annotation Guidelines
+
+4.1  Norm Compliance Score (NCₜ)
+The norm compliance score per turn is computed per Equation 9 of the paper as:
+NCₜ = cos( v(aₜ), v*(pₜ) )  +  μ₁ · σ(turnₜ; τ)  +  μ₂ · 𝐼ₖ[ I_constraintₖ(aₜ) ]
+
+•  v(aₜ) is the behaviour vector of the agent’s chosen action (lexical, prosodic, kinesic descriptors)
+•  v*(pₜ) is the gold behaviour vector of the active SPT social practice
+•  The second term σ measures timing alignment with the practice’s expected turn structure
+•  The third term averages satisfaction of hard normative constraints over all active constraints k
+In the synthetic datasets, NC scores were assigned by human annotators using a standardised rubric developed from the SPT practice library.
+
+4.2  Emotion Labels
+Base emotion labels follow the 6-class CMU-MOSEI scheme for cross-dataset compatibility: neutral, happy, sad, angry, surprised, disgusted. For the conflict mediation dataset, three additional classes were introduced to capture de-escalation dynamics not represented in standard affect corpora:
+
+Additional Class	Definition	Scenario
+defensive	Speaker is resisting perceived blame or accusation	Mediation
+anxious	Speaker shows worry or uncertainty without clear anger	Mediation
+calm	Speaker has moved to a composed, non-reactive emotional state	Mediation
+
+4.3  SPT Practice Library
+Each practice_active value in the dataset maps to a formal Social Practice Theory tuple defined in Section 3 of the paper (Equation 6):
+p = ⟨ pre(p),  acts(p),  post(p),  mean(p) ⟩
+
+•  pre(p) — preconditions that must hold over task context and user affect
+•  acts(p) — action schematic with timing and turn-taking constraints
+•  post(p) — expected effects on user state and interaction progress
+•  mean(p) — cultural meaning encoding (politeness level, deference, formality)
+The full practice library with all tuples for all three scenarios is implemented in src/compliance/practice_library.py in the repository.
+
+5. Data Availability and Licensing
+
+Dataset	Location	License	Citation Required
+classroom_interactions.json	GitHub repository (data/synthetic/)	CC BY 4.0	Yes — cite this paper
+ecommerce_negotiations.json	GitHub repository (data/synthetic/)	CC BY 4.0	Yes — cite this paper
+mediation_conflicts.json	GitHub repository (data/synthetic/)	CC BY 4.0	Yes — cite this paper
+CMU-MOSEI	github.com/A2Zadeh/CMU-MultimodalSDK	Academic use	Yes — cite Zadeh et al. 2018
+PersonaChat	huggingface.co/datasets/bavard/personachat	CC BY 3.0	Yes — cite Zhang et al. 2018
+
+ⓘ  The synthetic datasets are original contributions of this research and are released under Creative Commons Attribution 4.0 (CC BY 4.0). You are free to use, share, and adapt them provided you cite the paper.
+
+6. How to Cite
+
+If you use any of the synthetic datasets from this repository, please cite the paper as follows:
+
+@article{bethiramyas2025socially,   title  = {A Socially Compliant Reasoning Framework for Autonomous AI Agents in the Metaverse},   author = {Bethi Ramya Sree and Dhatterwal, Jagjit Singh and Banala, Rajesh},   year   = {2025},   url    = {https://github.com/bethiramyas/A-Socially-Compliant-Reasoning-Framework-for-Autonomous-AI-Agents-in-the-Metaverse} }
+
+7. Contact
+
+For questions about the datasets, annotation schema, or the simulation environment:
+
+Name: Bethi Ramya Sree
+Affiliation: Department of CS-AI, SR University, Warangal, Telangana, India — Pin 506371
+Email: bethiramyas@gmail.com
+GitHub: https://github.com/bethiramyas
+
