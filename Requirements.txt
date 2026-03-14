@@ -1,0 +1,89 @@
+# ============================================================
+# A Socially Compliant Reasoning Framework for Autonomous
+# AI Agents in the Metaverse
+# SR University, Warangal, Telangana, India
+# ============================================================
+# Install all dependencies with:
+#   pip install -r requirements.txt
+# Tested on Python 3.9 and 3.10
+# ============================================================
+
+# ── Core scientific computing ────────────────────────────────
+numpy>=1.24.0
+scipy>=1.10.0
+pandas>=2.0.0
+
+# ── Deep learning framework ──────────────────────────────────
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+
+# ── Transformer-based models (multimodal fusion encoder) ─────
+# Used for: cross-attention fusion of text, audio, vision
+# Paper reference: Section 5 — Multimodal Observation Encoding
+transformers>=4.35.0
+tokenizers>=0.14.0
+sentencepiece>=0.1.99
+
+# ── Reinforcement learning (DQN micro-policy) ────────────────
+# Used for: reactive micro-policy (Equation 12)
+gymnasium>=0.29.0
+stable-baselines3>=2.1.0
+
+# ── Ontology reasoning ───────────────────────────────────────
+# Used for: TBox/ABox ontology reasoning (Section 3)
+owlready2>=0.45
+
+# ── Natural language processing ──────────────────────────────
+nltk>=3.8.1
+spacy>=3.6.0
+# After install, run: python -m spacy download en_core_web_sm
+
+# ── Multimodal audio/speech features ─────────────────────────
+# Used for: speech prosody feature extraction (z_t^speech)
+librosa>=0.10.1
+soundfile>=0.12.1
+pyaudio>=0.2.13
+
+# ── Computer vision / facial features ────────────────────────
+# Used for: vision emotion features (z_t^vision)
+opencv-python>=4.8.0
+Pillow>=10.0.0
+
+# ── CMU-MOSEI dataset SDK ────────────────────────────────────
+# Used for: emotion recognition module training
+# Install SDK separately from: https://github.com/A2Zadeh/CMU-MultimodalSDK
+# mmsdk  # uncomment after cloning CMU-MultimodalSDK
+
+# ── Monte Carlo Tree Search ───────────────────────────────────
+# Used for: Guided MCTS planner (Equation 7)
+# Core MCTS logic is implemented in src/reasoning/mcts_planner.py
+# No external package required — pure Python implementation
+
+# ── Bayesian belief state updates ────────────────────────────
+# Used for: POMDP belief state filtering (Equation 1)
+filterpy>=1.4.5
+pomegranate>=0.14.8
+
+# ── Evaluation and metrics ───────────────────────────────────
+scikit-learn>=1.3.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# ── Unity3D simulation interface ─────────────────────────────
+# Used for: connecting Python agent to Unity3D environment
+# Requires Unity ML-Agents Toolkit installed separately:
+# https://github.com/Unity-Technologies/ml-agents
+mlagents-envs>=0.30.0
+
+# ── Utilities ────────────────────────────────────────────────
+tqdm>=4.65.0
+pyyaml>=6.0
+jsonlines>=3.1.0
+python-dotenv>=1.0.0
+loguru>=0.7.0
+rich>=13.5.0
+
+# ── Testing ──────────────────────────────────────────────────
+pytest>=7.4.0
+pytest-cov>=4.1.0
